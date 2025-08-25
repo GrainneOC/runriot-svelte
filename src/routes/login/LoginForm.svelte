@@ -1,5 +1,7 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
+  import { loggedInUser } from "$lib/runes.svelte";
+  import { runriotService } from "$lib/services/runriot-service";
   import Message from "$lib/ui/Message.svelte";
   import UserCredentials from "$lib/ui/UserCredentials.svelte";
 
@@ -8,11 +10,19 @@
   let message = $state("");
 
   async function login() {
-    const success = false;
-    if (success) {
-      goto("/donate");
+    console.log(`attempting to log in email: ${email} with password: ${password}`);
+    let session = await runriotService.login(email, password);
+    if (session) {
+      loggedInUser.email = email;
+      loggedInUser.name = session.name;
+      loggedInUser.token = session.token;
+      loggedInUser._id = session._id;
+      console.log(`Session: ${JSON.stringify(session)}`);
+      goto("/result");
     } else {
-      message = "Error Trying to sign up";
+      email = "";
+      password = "";
+      message = "Invalid Credentials";
     }
   }
 </script>
