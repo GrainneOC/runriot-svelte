@@ -1,5 +1,5 @@
 <script lang="ts">
-  let { lat = $bindable(0.0), lng = $bindable(0.0) } = $props();
+  let { lat = $bindable(53.3498), lng = $bindable(-6.2603) } = $props();
 </script>
 
 <div class="box field is-horizontal">
@@ -20,5 +20,8 @@
         <input id="lat" class="input" type="float" bind:value={lng} />
       </p>
     </div>
+  </div>
+  <div class="field">
+    <p class="help">Default: Dublin coordinates (53.3498, -6.2603). Update for your actual running location.</p>
   </div>
 </div>

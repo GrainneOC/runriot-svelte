@@ -1,6 +1,6 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import { loggedInUser } from "$lib/runes.svelte";
+  import { loggedInUser, saveUserToStorage } from "$lib/runes.svelte";
   import { runriotService } from "$lib/services/runriot-service";
   import Message from "$lib/ui/Message.svelte";
   import UserCredentials from "$lib/ui/UserCredentials.svelte";
@@ -14,11 +14,16 @@
     let session = await runriotService.login(email, password);
     if (session) {
       loggedInUser.email = email;
-      loggedInUser.name = session.name;
+      loggedInUser.name = session.name || "";
       loggedInUser.token = session.token;
-      loggedInUser._id = session._id;
+      loggedInUser._id = session._id || "";
+      
+      // Save to localStorage
+      saveUserToStorage();
+      
       console.log(`Session: ${JSON.stringify(session)}`);
-      goto("/result");
+      console.log(`loggedInUser after login:`, loggedInUser);
+      goto("/dashboard");
     } else {
       email = "";
       password = "";
