@@ -20,8 +20,6 @@ export interface Trail {
     location: string;
     userid?: string;
     img?: string;
-    lat?: number;
-    lng?: number;
 }
 
 export interface Result {
