@@ -27,7 +27,11 @@ export interface Result {
     distance: number;
     duration: number;
     date: string; 
-    trailid: string;
+    trailid?: string; // Optional since it comes from URL parameter
     lat: number;
     lng: number;
+}
+
+export interface PopulatedResult extends Omit<Result, 'trailid'> {
+    trailid?: Trail; // When populated, trailid contains the full trail object
 }

@@ -12,7 +12,11 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-           <a class="button" id="addresult" href="/addresult"> Add Result </a>
+           <a class="button" id="dashboard" href="/dashboard"> Dashboard </a>
+           <a class="button" id="addresult" href="/result"> Add Result </a>
+           <a class="button" id="trails" href="/trail"> Trails </a>
+           <a class="button" id="charts" href="/charts"> Charts </a>
+           <a class="button" id="maps" href="/maps"> Maps </a>
            <a class="button" id="report" href="/report"> Report </a>
            <a class="button" id="logout" href="/logout"> Log out [{loggedInUser.email}]</a>
         </div>
