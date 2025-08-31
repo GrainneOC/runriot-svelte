@@ -1,6 +1,7 @@
 # RunRiot Svelte - Fullstack Running App
 
 A simple running app built with Svelte that shows how to make a full website with charts and maps.
+Deployed on Vercel: https://runriot-svelte.vercel.app/
 
 ## What Was Implemented
 
